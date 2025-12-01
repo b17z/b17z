@@ -1,0 +1,765 @@
+@import "tailwindcss";
+@import "@fontsource/vt323";
+
+:root {
+  /* Base colors */
+  --color-background: #0a0a0f;
+  --color-foreground: #ededed;
+
+  /* Section accent colors */
+  --color-accent-violet: #8b5cf6;
+  --color-accent-amber: #fbbf24;
+  --color-accent-cyan: #06b6d4;
+  --color-accent-pink: #ec4899;
+
+  /* Legacy aliases (for backwards compatibility) */
+  --background: var(--color-background);
+  --foreground: var(--color-foreground);
+  --accent-purple: var(--color-accent-violet);
+  --accent-blue: #3b82f6;
+  --accent-cyan: var(--color-accent-cyan);
+  --accent-pink: var(--color-accent-pink);
+
+  /* Typography */
+  --font-pixel: "VT323", monospace;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Pixel font class */
+.font-pixel {
+  font-family: var(--font-pixel);
+}
+
+/* Vaporwave gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #a855f7 0%, #3b82f6 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glowing effect */
+.glow {
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.5),
+               0 0 40px rgba(59, 130, 246, 0.3),
+               0 0 60px rgba(6, 182, 212, 0.2);
+}
+
+/* Book spine card styles */
+.book-spine {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.book-spine:hover {
+  transform: translateX(-8px) rotateY(-5deg);
+  box-shadow: 8px 0 20px rgba(168, 85, 247, 0.3);
+}
+
+/* Enhanced scanline overlay */
+.scanlines::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 100;
+}
+
+/* CRT flicker effect */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+  z-index: 100;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.27861; }
+  5% { opacity: 0.34769; }
+  10% { opacity: 0.23604; }
+  15% { opacity: 0.90626; }
+  20% { opacity: 0.18128; }
+  25% { opacity: 0.83891; }
+  30% { opacity: 0.65583; }
+  35% { opacity: 0.67807; }
+  40% { opacity: 0.26559; }
+  45% { opacity: 0.84693; }
+  50% { opacity: 0.96019; }
+  55% { opacity: 0.08594; }
+  60% { opacity: 0.20313; }
+  65% { opacity: 0.71988; }
+  70% { opacity: 0.53455; }
+  75% { opacity: 0.37288; }
+  80% { opacity: 0.71428; }
+  85% { opacity: 0.70419; }
+  90% { opacity: 0.7003; }
+  95% { opacity: 0.36108; }
+  100% { opacity: 0.24387; }
+}
+
+/* Japanese text decoration - pixel style */
+.jp-text {
+  font-family: var(--font-pixel);
+  opacity: 0.12;
+  user-select: none;
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* Glitch effect on hover */
+.glitch-hover {
+  position: relative;
+}
+
+.glitch-hover:hover {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* RGB split on glitch */
+.glitch-hover:hover::before,
+.glitch-hover:hover::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitch-hover:hover::before {
+  color: #ff00ff;
+  animation: glitch-1 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+}
+
+.glitch-hover:hover::after {
+  color: #00ffff;
+  animation: glitch-2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+
+@keyframes glitch-1 {
+  0% { transform: translate(0); }
+  20% { transform: translate(3px, 0); }
+  40% { transform: translate(-3px, 0); }
+  60% { transform: translate(3px, 0); }
+  80% { transform: translate(-3px, 0); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitch-2 {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px, 0); }
+  40% { transform: translate(3px, 0); }
+  60% { transform: translate(-3px, 0); }
+  80% { transform: translate(3px, 0); }
+  100% { transform: translate(0); }
+}
+
+/* Animated gradient background */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #0a0a0f, #1a0a2e, #0a1a2e, #0a0a0f);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Grid pattern overlay */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* CRT vignette effect */
+.crt-vignette {
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.7),
+              inset 0 0 100px rgba(0, 0, 0, 0.5);
+}
+
+/* CRT screen curve effect */
+.crt-curve {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.crt-curve::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Terminal window styles */
+.terminal-chrome {
+  background: linear-gradient(180deg, #1a1a2e 0%, #16162a 100%);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.terminal-button:hover {
+  filter: brightness(1.3);
+}
+
+/* Status indicator pulse */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+    opacity: 0.8;
+  }
+}
+
+.status-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Pixel badge style */
+.pixel-badge {
+  font-family: var(--font-pixel);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  image-rendering: pixelated;
+}
+
+/* Content expansion animation */
+@keyframes expand {
+  from {
+    opacity: 0;
+    transform: translateX(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.animate-expand {
+  animation: expand 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom scrollbar for content - uses CSS custom properties for dynamic colors */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color, linear-gradient(180deg, #a855f7 0%, #3b82f6 100%));
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover, linear-gradient(180deg, #c084fc 0%, #60a5fa 100%));
+}
+
+/* Holographic image effect */
+.holographic {
+  position: relative;
+  overflow: hidden;
+}
+
+.holographic::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 255, 0.03) 0px,
+    rgba(0, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+}
+
+.holographic::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  animation: holographic-shine 3s ease-in-out infinite;
+}
+
+@keyframes holographic-shine {
+  0%, 100% { left: -100%; }
+  50% { left: 150%; }
+}
+
+/* Vertical writing mode for sidebar */
+.writing-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Editorial headline glow - cyberpunk luminosity */
+.headline-glow {
+  text-shadow:
+    0 0 40px currentColor,
+    0 0 80px currentColor,
+    0 0 120px currentColor;
+  filter: drop-shadow(0 0 20px currentColor);
+}
+
+/* Specific color glows for headlines */
+.shadow-purple-500\/50 {
+  --tw-shadow-color: rgb(168 85 247 / 0.5);
+  text-shadow:
+    0 0 40px rgb(168 85 247 / 0.4),
+    0 0 80px rgb(168 85 247 / 0.2),
+    0 0 120px rgb(168 85 247 / 0.1);
+}
+
+.shadow-blue-500\/50 {
+  --tw-shadow-color: rgb(59 130 246 / 0.5);
+  text-shadow:
+    0 0 40px rgb(59 130 246 / 0.4),
+    0 0 80px rgb(59 130 246 / 0.2),
+    0 0 120px rgb(59 130 246 / 0.1);
+}
+
+.shadow-cyan-500\/50 {
+  --tw-shadow-color: rgb(6 182 212 / 0.5);
+  text-shadow:
+    0 0 40px rgb(6 182 212 / 0.4),
+    0 0 80px rgb(6 182 212 / 0.2),
+    0 0 120px rgb(6 182 212 / 0.1);
+}
+
+.shadow-pink-500\/50 {
+  --tw-shadow-color: rgb(236 72 153 / 0.5);
+  text-shadow:
+    0 0 40px rgb(236 72 153 / 0.4),
+    0 0 80px rgb(236 72 153 / 0.2),
+    0 0 120px rgb(236 72 153 / 0.1);
+}
+
+/* Editorial headline styles */
+.editorial-headline {
+  position: relative;
+}
+
+/* Subtle bloom/glow animation on headlines */
+@keyframes headline-pulse {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 20px currentColor);
+  }
+  50% {
+    filter: brightness(1.1) drop-shadow(0 0 30px currentColor);
+  }
+}
+
+.headline-glow {
+  animation: headline-pulse 4s ease-in-out infinite;
+}
+
+/* Article multi-column layout */
+.article-columns {
+  column-count: 1;
+  column-gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .article-columns {
+    column-count: 2;
+  }
+}
+
+.article-columns > * {
+  break-inside: avoid;
+}
+
+/* Drop cap glow effect */
+.drop-cap-glow::first-letter {
+  text-shadow:
+    0 0 20px rgba(168, 85, 247, 0.5),
+    0 0 40px rgba(168, 85, 247, 0.3);
+}
+
+/* Column divider lines */
+.article-columns {
+  column-rule: 1px solid rgba(168, 85, 247, 0.1);
+}
+
+/* Article transitions */
+.article-enter {
+  animation: article-slide-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes article-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Code block syntax highlighting base */
+pre code {
+  display: block;
+  white-space: pre;
+  tab-size: 2;
+}
+
+/* Smooth transitions for interactive elements */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ================================
+   ATMOSPHERIC LANDING PAGE STYLES
+   ================================ */
+
+/* Base atmospheric background */
+.atmospheric-bg {
+  background: linear-gradient(135deg, #08080c 0%, #0d0a14 50%, #080c10 100%);
+}
+
+/* Radial gradients for depth - top left purple hint */
+.bg-gradient-radial-tl {
+  background: radial-gradient(
+    ellipse 80% 60% at 10% 20%,
+    rgba(88, 28, 135, 0.15) 0%,
+    transparent 50%
+  );
+}
+
+/* Radial gradient - bottom right cyan/blue hint */
+.bg-gradient-radial-br {
+  background: radial-gradient(
+    ellipse 70% 50% at 90% 80%,
+    rgba(8, 145, 178, 0.1) 0%,
+    transparent 50%
+  );
+}
+
+/* Noise/grain texture overlay */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+/* Bokeh circles - soft out-of-focus neon lights */
+.bokeh {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.bokeh-1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
+  top: 10%;
+  left: 5%;
+  animation: bokeh-float 20s ease-in-out infinite;
+}
+
+.bokeh-2 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, transparent 70%);
+  bottom: 15%;
+  right: 10%;
+  animation: bokeh-float 25s ease-in-out infinite reverse;
+}
+
+.bokeh-3 {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%);
+  top: 60%;
+  left: 70%;
+  animation: bokeh-float 18s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+@keyframes bokeh-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translate(10px, -15px) scale(1.05);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-5px, 10px) scale(0.95);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(-10px, -5px) scale(1.02);
+    opacity: 0.35;
+  }
+}
+
+/* Japanese text - ambient texture style */
+.jp-ambient {
+  font-family: var(--font-pixel);
+  color: rgba(255, 255, 255, 0.02);
+  user-select: none;
+  pointer-events: none;
+  text-shadow: 0 0 40px rgba(168, 85, 247, 0.05);
+  filter: blur(1px);
+}
+
+/* Shelf surface - the edge books sit on */
+.shelf-surface {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 40px);
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 20%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.03) 80%,
+    transparent 100%
+  );
+  border-radius: 2px;
+}
+
+/* Soft glow where books meet surface */
+.shelf-glow {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 60px);
+  height: 40px;
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 0%,
+    rgba(168, 85, 247, 0.08) 0%,
+    rgba(59, 130, 246, 0.04) 40%,
+    transparent 70%
+  );
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+/* Very subtle scanlines for atmosphere (not CRT harsh) */
+.scanlines-subtle::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.02) 0px,
+    rgba(0, 0, 0, 0.02) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+}
+
+/* ================================
+   MASTHEAD / ABOUT SECTION STYLES
+   ================================ */
+
+/* Masthead container glow effect */
+.masthead-glow {
+  box-shadow:
+    0 0 20px rgba(168, 85, 247, 0.05),
+    0 0 40px rgba(168, 85, 247, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* Pulsing live indicator dot */
+.status-dot {
+  animation: status-pulse 2s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 4px rgba(52, 211, 153, 0.8), 0 0 8px rgba(52, 211, 153, 0.4);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 8px rgba(52, 211, 153, 1), 0 0 16px rgba(52, 211, 153, 0.6);
+  }
+}
+
+/* ================================
+   REDUCED MOTION PREFERENCES
+   ================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable specific animations */
+  .animate-pulse,
+  .status-pulse,
+  .status-dot,
+  .bokeh,
+  .bokeh-1,
+  .bokeh-2,
+  .bokeh-3 {
+    animation: none !important;
+  }
+
+  /* Disable glow pulse effects */
+  .headline-glow {
+    animation: none !important;
+    filter: none !important;
+  }
+
+  /* Disable holographic shine */
+  .holographic::after {
+    animation: none !important;
+  }
+
+  /* Disable glitch hover effects */
+  .glitch-hover:hover {
+    animation: none !important;
+  }
+
+  /* Disable scanline flicker */
+  .scanlines::after {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  /* Keep static glow effects but remove animation */
+  .glow {
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+
+  /* Disable book spine hover transform */
+  .book-spine:hover {
+    transform: none !important;
+  }
+
+  /* Disable gradient shift */
+  .animated-gradient {
+    animation: none !important;
+    background-position: 0% 50% !important;
+  }
+}
+
+/* ================================
+   SCREEN READER ONLY UTILITY
+   ================================ */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ================================
+   FOCUS VISIBLE UTILITIES
+   ================================ */
+
+/* High contrast focus states for keyboard navigation */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Remove default focus outline when using focus-visible polyfill */
+:focus:not(:focus-visible) {
+  outline: none;
+}
