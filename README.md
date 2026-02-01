@@ -1,19 +1,55 @@
-# b17z
-
-My corner of the internet. A digital zine for tech, food, books, and events.
-
-## Development
-
-```bash
-npm install
-npm run dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000)
-
-## Production
-
-```bash
-npm run build
-npm run start
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║   ██████╗  ██╗███████╗███████╗                                               ║
+║   ██╔══██╗███║╚════██║╚════██║                                               ║
+║   ██████╔╝╚██║   ██╔╝   ██╔╝                                                 ║
+║   ██╔══██╗ ██║  ██╔╝   ██╔╝                                                  ║
+║   ██████╔╝ ██║ ███████╗███████╗                                              ║
+║   ╚═════╝  ╚═╝ ╚══════╝╚══════╝                                              ║
+║                                                                              ║
+║   ░▒▓ i like doing things ▓▒░                                                ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║   > STATUS: doing things                                                     ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║   [ ACTIVE PROJECTS ]                                                        ║
+║                                                                              ║
+║   ┌─────────────────────────────────────────────────────────────────────┐    ║
+║   │ ◉ SAGE                                                              │    ║
+║   │   Semantic memory for Claude Code. Checkpoint research,             │    ║
+║   │   persist knowledge, never lose context to compaction.              │    ║
+║   │   src ──── github.com/b17z/sage                                     │    ║
+║   │   portal ─ b17z.github.io/sage                                      │    ║
+║   └─────────────────────────────────────────────────────────────────────┘    ║
+║                                                                              ║
+║   ┌─────────────────────────────────────────────────────────────────────┐    ║
+║   │ ◉ CRUCIBLE                                                          │    ║
+║   │   Automated code review with enforcement patterns,                  │    ║
+║   │   domain skills, and LLM-powered compliance checks.                 │    ║
+║   │   src ──── github.com/b17z/crucible                                 │    ║
+║   │   portal ─ b17z.github.io/crucible                                  │    ║
+║   └─────────────────────────────────────────────────────────────────────┘    ║
+║                                                                              ║
+║   ┌─────────────────────────────────────────────────────────────────────┐    ║
+║   │ ◉ GATEWAY                                                           │    ║
+║   │   MCP server aggregator. One config, multiple servers,              │    ║
+║   │   unified tooling for Claude Code.                                  │    ║
+║   │   src ──── github.com/b17z/gateway                                  │    ║
+║   │   portal ─ b17z.github.io/gateway                                   │    ║
+║   └─────────────────────────────────────────────────────────────────────┘    ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║   [ CONNECT ]                                                                ║
+║                                                                              ║
+║   ◈ web ──── b17z.io                                                         ║
+║   ◈ x ────── @0xb17z                                                         ║
+║                                                                              ║
+║   > ▌                                                                        ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
 ```
