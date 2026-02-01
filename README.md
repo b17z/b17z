@@ -37,7 +37,7 @@
 │   domain skills, and LLM-powered compliance checks.                     │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
-[![src](https://img.shields.io/badge/src-242424?style=flat-square&logo=github)](https://github.com/b17z/crucible) [![portal](https://img.shields.io/badge/portal-a855f7?style=flat-square)](https://b17z.github.io/crucible)
+[![src](https://img.shields.io/badge/src-242424?style=flat-square&logo=github)](https://github.com/b17z/crucible) [![portal](https://img.shields.io/badge/portal-a855f7?style=flat-square)](https://b17z.github.io/crucible) [![PyPI](https://img.shields.io/pypi/v/crucible-mcp?style=flat-square&color=3b82f6)](https://pypi.org/project/crucible-mcp/)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -46,7 +46,7 @@
 │   unified tooling for Claude Code.                                      │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
-[![src](https://img.shields.io/badge/src-242424?style=flat-square&logo=github)](https://github.com/b17z/gateway) [![portal](https://img.shields.io/badge/portal-a855f7?style=flat-square)](https://b17z.github.io/gateway)
+[![src](https://img.shields.io/badge/src-242424?style=flat-square&logo=github)](https://github.com/b17z/gateway) [![portal](https://img.shields.io/badge/portal-a855f7?style=flat-square)](https://b17z.github.io/gateway) [![PyPI](https://img.shields.io/pypi/v/mcpmon?style=flat-square&color=3b82f6)](https://pypi.org/project/mcpmon/)
 
 <br>
 
